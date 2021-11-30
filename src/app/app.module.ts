@@ -23,6 +23,7 @@ import { ProfessionalDetailComponent } from './add-employee/professional-detail/
 import { EducatoinDetailComponent } from './add-employee/educatoin-detail/educatoin-detail.component';
 import { ExperianceDetailComponent } from './add-employee/experiance-detail/experiance-detail.component';
 import { CurrentOrgDetailComponent } from './add-employee/current-org-detail/current-org-detail.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { CurrentOrgDetailComponent } from './add-employee/current-org-detail/cur
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
