@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.center{
+    text-align: center;
+}
+
+.next{
+    background-color:blueviolet;
+    color: white;
+}
+.back{
+    background-color: grey;
+}
+
+.mr-10{
+    margin-right: 10px !important;
+}
+
+.ml-10{
+    margin-left: 10px !important;
+}
+
+.mb-10{
+    margin-bottom: 10px !important;
+}
+
+table {width: 100%;}

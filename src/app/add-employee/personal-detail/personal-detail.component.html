@@ -1,0 +1,96 @@
+<h1 class="center"> Personal Detail</h1>
+<form [formGroup]="personalDetailFormGroup">
+
+    <mat-grid-list cols="3" rowHeight="3:1">
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <input matInput formControlName="firstName" placeholder=" First name*" required>
+                <mat-error *ngIf="controls.firstName.errors?.required">
+                    First Name is required
+                </mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <input matInput formControlName="middleName" placeholder="Middle name">
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <input matInput formControlName="lastName" placeholder="Last name">
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <input matInput formControlName="email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+                    placeholder="Email*">
+                <mat-error *ngIf="controls.email.errors?.required">
+                    Email is required
+                </mat-error>
+                <mat-error *ngIf="controls.email.errors?.pattern">
+                    Please enter a valid email address
+                </mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <input matInput type="tel" formControlName="phone" placeholder="Mobile No*" maxlength="10"
+                    minlength="10" required>
+                <mat-error *ngIf="controls.phone.errors?.required">
+                    Mobile No is required
+                </mat-error>
+                <mat-error *ngIf="controls.phone.errors?.minlength">
+                    Mobile No is not valid
+                </mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <input matInput type="tel" formControlName="alternateNumber" minlength="10" maxlength="10"
+                    placeholder="Alternate No">
+                <mat-error *ngIf="controls.alternateNumber.errors?.minlength">
+                    Mobile No is not valid
+                </mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="2" rowHeight="3:1">
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <input matInput [matDatepicker]="picker" formControlName="birthDate" placeholder="Birthdate" required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="controls.birthDate.errors?.required">
+                    Birthdate is required
+                </mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <div formGroupName="personalDetailFormGroup">
+                <p for="" class="set-label">Image</p>
+                <input #file type="file" (change)="preview(file.files)" formControlName="image" />
+                <mat-error *ngIf="controls.image.errors?.required">Please Select Iamge</mat-error>
+            </div>
+            <img src="{{imgURL}}" height="50" *ngIf="imgURL">
+
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <input matInput formControlName="presentAddress" placeholder="Present address" required>
+                <mat-error *ngIf="controls.presentAddress.errors?.required">
+                    Present Address is required
+                </mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <input matInput formControlName="permanentAddress" placeholder="Permanent Address" required>
+                <mat-error *ngIf="controls.permanentAddress.errors?.required">
+                    Permanent Address is required
+                </mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+    </mat-grid-list>
+</form>

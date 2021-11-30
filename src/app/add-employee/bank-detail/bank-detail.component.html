@@ -1,0 +1,66 @@
+<h1 class="center"> Bank Detail</h1>
+<form [formGroup]="bankDetailFormGroup">
+
+    <mat-grid-list cols="2" rowHeight="3:1">
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <input matInput formControlName="bankName" placeholder="Bank name*" required>
+                <mat-error *ngIf="controls.bankName.errors?.required">
+                    Bank Name is required
+                </mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <input matInput formControlName="accountHolderName" placeholder="Account Holder name*" required>
+                <mat-error *ngIf="controls.accountHolderName.errors?.required">
+                    Account Holder Name is required
+                </mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <input matInput type=number formControlName="accountNo" placeholder="Account No*" required>
+                <mat-error *ngIf="controls.accountNo.errors?.required">
+                    Account No is required
+                </mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <input matInput formControlName="ifsc" placeholder="IFSC Code*" pattern="[A-Z]{4}0[A-Z0-9]{6}$"
+                    required>
+                <mat-error *ngIf="controls.ifsc.errors?.required">
+                    IFSC is required
+                </mat-error>
+                <mat-error *ngIf="controls.ifsc.errors?.pattern">
+                    IFSC Code is valid
+                </mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <input matInput type="number" formControlName="aadharNo" placeholder="Aadhar No*" maxlength="12"
+                    minlength="12" required>
+                <mat-error *ngIf="controls.aadharNo.errors?.required">
+                    Aadhar No is required
+                </mat-error>
+                <mat-error *ngIf="controls.aadharNo.errors?.minlength">
+                    Aadhar No is not valid
+                </mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <input matInput formControlName="panCardNo" placeholder="Pan Card No*"
+                    pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" required>
+                <mat-error *ngIf="controls.panCardNo.errors?.required">
+                    Pan Card No is required
+                </mat-error>
+                <mat-error *ngIf="controls.panCardNo.errors?.pattern">
+                    Pan Card No is Valid
+                </mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+    </mat-grid-list>
+</form>

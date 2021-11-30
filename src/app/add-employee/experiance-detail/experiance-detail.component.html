@@ -1,0 +1,45 @@
+<div id="education-detail" [formGroup]="experienceDetailFormGroup">
+    <mat-card>
+        <div formGroupName="experienceDetailFormGroup">
+            <div formArrayName="experienceDetail">
+                <button mat-button (click)="addFormArray()" class="next">
+                    Add More
+                </button>
+
+                <div *ngFor="let item of experienceDetailFormGroup.get('experienceDetail').controls; let i=index"
+                    [formGroupName]="i">
+
+                    <mat-form-field>
+                        <input matInput placeholder="Company Name" formControlName="companyName" required>
+                        <mat-error *ngIf="controls[i].controls?.educationName.errors?.required">
+                            Company Name is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input matInput placeholder="Position" formControlName="position" required>
+                        <mat-error *ngIf="controls[i].controls?.position.errors?.required">
+                            position is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input matInput placeholder="Total Year" formControlName="totalYear" required>
+                        <mat-error *ngIf="controls[i].controls?.totalYear.errors?.required">
+                            Result is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input matInput placeholder="Last CTC" formControlName="lastCTC">
+                        <mat-error *ngIf="controls[i].controls?.lastCTC.errors?.required">
+                            Last CTC is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <button (click)="removeEducationDetail(i)" mat-button class="back">Remove</button>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+</div>

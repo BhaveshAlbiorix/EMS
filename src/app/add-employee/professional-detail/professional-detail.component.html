@@ -1,0 +1,41 @@
+<h1 class="center"> Bank Detail</h1>
+<form [formGroup]="professionalDetailFormGroup">
+
+    <mat-grid-list cols="2" rowHeight="3:1">
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <input matInput formControlName="designation" placeholder="Designation name*" required>
+                <mat-error *ngIf="controls?.designation.errors?.required">
+                    Designation is required
+                </mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <input matInput formControlName="department" placeholder="Department*" required>
+                <mat-error *ngIf="controls?.department.errors?.required">
+                    Department is required
+                </mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <input matInput formControlName="currentLocation" placeholder="Current Location">
+                <mat-error *ngIf="controls?.currentLocation.errors?.required">
+                    Current Location is required
+                </mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+
+
+        <mat-grid-tile>
+            <div formGroupName="personalDetailFormGroup">
+                <p for="" class="set-label">Upload Resume</p>
+                <input #file type="file" (change)="preview(file.files)" formControlName="resume" />
+                <mat-error *ngIf="controls?.resume.errors?.required">Please Select Iamge</mat-error>
+                <p>Only PDF File is Allow</p>
+            </div>
+
+        </mat-grid-tile>
+    </mat-grid-list>
+</form>

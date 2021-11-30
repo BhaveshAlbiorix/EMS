@@ -1,0 +1,54 @@
+<mat-stepper linear #stepper>
+    <mat-step [stepControl]="educationDetailFormGroup">
+        <ng-template matStepLabel>Personal Detail</ng-template>
+        <mat-card>
+            <app-educatoin-detail [edForm]="educationDetailFormGroup"></app-educatoin-detail>
+
+            <div>
+                <button mat-button matStepperNext class="next">Next</button>
+            </div>
+        </mat-card>
+    </mat-step>
+    <mat-step [stepControl]="bankDetailFormGroup">
+        <ng-template matStepLabel>Bank Detail</ng-template>
+        <app-bank-detail [bdForm]="bankDetailFormGroup"></app-bank-detail>
+        <div>
+            <button mat-button matStepperPrevious class="back mr-10">Back</button>
+            <button mat-button matStepperNext class="next">Next</button>
+        </div>
+    </mat-step>
+    <mat-step [stepControl]="professionalDetailFormGroup">
+        <ng-template matStepLabel>Professional Detail</ng-template>
+        <app-professional-detail [pdForm]="professionalDetailFormGroup"></app-professional-detail>
+        <div>
+            <button mat-button matStepperPrevious class="back mr-10">Back</button>
+            <button mat-button matStepperNext class="next">Next</button>
+        </div>
+    </mat-step>
+    <mat-step [stepControl]="educationDetailFormGroup">
+        <ng-template matStepLabel>Education Detail</ng-template>
+        <app-educatoin-detail [edForm]="educationDetailFormGroup">
+        </app-educatoin-detail>
+        <div>
+            <button mat-button matStepperPrevious class="back mr-10">Back</button>
+            <button mat-button matStepperNext class="next">Next</button>
+        </div>
+    </mat-step>
+    <mat-step [stepControl]="experienceDetailFormGroup">
+        <ng-template matStepLabel>Experiance Detail</ng-template>
+        <app-experiance-detail [expForm]="experienceDetailFormGroup"></app-experiance-detail>
+        <div>
+            <button mat-button matStepperPrevious class="back mr-10">Back</button>
+            <button mat-button matStepperNext class="next">Next</button>
+        </div>
+
+    </mat-step>
+    <mat-step [stepControl]="currentOrgFormGroup">
+        <ng-template matStepLabel>Current Organization Detail</ng-template>
+
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+    </mat-step>
+</mat-stepper>

@@ -1,0 +1,45 @@
+<form [formGroup]="educationDetailFormGroup">
+    <mat-card>
+        <div formGroupName="educationDetailFormGroup">
+            <div formArrayName="educationDetail">
+                <button mat-button (click)="addEducationDetail()" class="next mb-10">
+                    Add More
+                </button>
+
+                <div *ngFor="let item of educationDetailFormGroup.get('educationDetail').controls; let i=index"
+                    [formGroupName]="i">
+
+                    <mat-form-field>
+                        <input matInput placeholder="Education Name" formControlName="educationName" required>
+                        <mat-error *ngIf="item.controls?.educationName.errors?.required">
+                            Education Name is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input matInput placeholder="University" formControlName="universityName" required>
+                        <mat-error *ngIf="item.controls?.universityName.errors?.required">
+                            University is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input matInput placeholder="Grade" formControlName="result" required>
+                        <mat-error *ngIf="item.controls?.result.errors?.required">
+                            Result is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input matInput placeholder="Year Of Passing" formControlName="year">
+                        <mat-error *ngIf="controls[i].controls?.year.errors?.required">
+                            Passing Year is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <button (click)="removeEducationDetail(i)" mat-button class="back">Remove</button>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+</form>
