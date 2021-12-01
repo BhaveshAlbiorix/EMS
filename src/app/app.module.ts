@@ -24,6 +24,9 @@ import { EducatoinDetailComponent } from './add-employee/educatoin-detail/educat
 import { ExperianceDetailComponent } from './add-employee/experiance-detail/experiance-detail.component';
 import { CurrentOrgDetailComponent } from './add-employee/current-org-detail/current-org-detail.component';
 import { MatIconModule } from '@angular/material/icon';
+import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import { MatIconModule } from '@angular/material/icon';
     ProfessionalDetailComponent,
     EducatoinDetailComponent,
     ExperianceDetailComponent,
-    CurrentOrgDetailComponent
+    CurrentOrgDetailComponent,
+    EmployeeDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +57,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    MatIconModule
+    MatIconModule,
+    MatSortModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

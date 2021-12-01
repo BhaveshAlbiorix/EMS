@@ -1,4 +1,4 @@
-<h1 class="center"> Bank Detail</h1>
+<h1 class="center"> Professional Detail</h1>
 <form [formGroup]="professionalDetailFormGroup">
 
     <mat-grid-list cols="2" rowHeight="3:1">
@@ -29,13 +29,13 @@
 
 
         <mat-grid-tile>
-            <div formGroupName="personalDetailFormGroup">
+            <div>
                 <p for="" class="set-label">Upload Resume</p>
-                <input #file type="file" (change)="preview(file.files)" formControlName="resume" />
-                <mat-error *ngIf="controls?.resume.errors?.required">Please Select Iamge</mat-error>
+                <input #file type="file" accept="application/pdf" (change)="preview(file.files)"
+                    formControlName="resume" />
+                <mat-error *ngIf="controls?.resume.errors?.required">Please Select PDF</mat-error>
                 <p>Only PDF File is Allow</p>
             </div>
-
         </mat-grid-tile>
     </mat-grid-list>
 </form>

@@ -30,7 +30,7 @@ export class EducatoinDetailComponent implements OnInit {
       universityName: ['', Validators.required],
       result: ['', Validators.required],
       year: ['', Validators.required],
-      isEdit: [true]
+      isEdit: [false]
     })
   }
 
@@ -42,4 +42,7 @@ export class EducatoinDetailComponent implements OnInit {
     this.educationDetailFormGroup.get('educationDetail').removeAt(index);
   }
 
+  toggle(index: number) {
+    this.educationDetailFormGroup.get('educationDetail').controls[index].get('isEdit').setValue(!this.educationDetailFormGroup.get('educationDetail').controls[index].get('isEdit').value)
+  }
 }

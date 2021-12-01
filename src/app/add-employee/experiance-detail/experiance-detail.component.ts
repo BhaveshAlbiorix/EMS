@@ -17,7 +17,7 @@ export class ExperianceDetailComponent implements OnInit {
   }
 
   get controls() {
-    return this.experienceDetailFormGroup.controls;
+    return this.experienceDetailFormGroup.controls.experienceDetail.controls;
   }
 
   addFormGroup() {
@@ -26,18 +26,20 @@ export class ExperianceDetailComponent implements OnInit {
       position: ['', Validators.required],
       totalYear: ['', Validators.required],
       lastCTC: ['', Validators.required],
-      isEdit: [true]
+      isEdit: [false]
     })
   }
 
-  addFormArray() {
-    this.experienceDetailFormGroup.get('educationDetail').push(this.addFormGroup());
+  addExperiance() {
+    this.experienceDetailFormGroup.get('experienceDetail').push(this.addFormGroup());
   }
 
-  removeEducationDetail(index: any) {
-    let formGroup = this.experienceDetailFormGroup.get('educationDetail');
-    formGroup.splice(index, 1);
-    this.experienceDetailFormGroup.get('educationDetail').patchValue(formGroup);
+  removeExperiance(index: any) {
+    this.experienceDetailFormGroup.get('experienceDetail').removeAt(index);
+  }
+
+  toggle(index: number) {
+    this.experienceDetailFormGroup.get('experienceDetail').controls[index].get('isEdit').setValue(!this.experienceDetailFormGroup.get('experienceDetail').controls[index].get('isEdit').value)
   }
 
 }

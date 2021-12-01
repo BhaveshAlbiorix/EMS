@@ -37,6 +37,7 @@ export class PersonalDetailComponent implements OnInit {
     reader.readAsDataURL(files[0]);
     reader.onload = (_event) => {
       this.imgURL = reader.result;
+      this.personalDetailFormGroup.patchValue({ image: this.imgURL })
     }
   }
 

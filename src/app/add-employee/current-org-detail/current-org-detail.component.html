@@ -1,1 +1,36 @@
-<p>current-org-detail works!</p>
+<h1 class="center"> Current Organazation Detail</h1>
+<form [formGroup]="currentOrgFormGroup">
+
+    <mat-grid-list cols="2" rowHeight="3:1">
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <input matInput [matDatepicker]="picker2" formControlName="joiningDate" placeholder="Joining Date*"
+                    required>
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+                <mat-error *ngIf="controls.joiningDate.errors?.required">
+                    Joining Date required
+                </mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <input matInput [matDatepicker]="picker3" formControlName="appraisalDate"
+                    placeholder="Next Appraisal Date*" required>
+                <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                <mat-datepicker #picker3></mat-datepicker>
+                <mat-error *ngIf="controls.appraisalDate.errors?.required">
+                    Appraisal Date is required
+                </mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <input matInput type=number formControlName="ctc" placeholder="Current CTC*" required>
+                <mat-error *ngIf="controls.ctc.errors?.required">
+                    Current CTC is required
+                </mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+    </mat-grid-list>
+</form>

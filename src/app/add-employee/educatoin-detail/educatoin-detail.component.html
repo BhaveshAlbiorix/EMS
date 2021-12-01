@@ -1,65 +1,84 @@
-<div style=" margin-right: 80px;margin-top: 30px;text-align: right ;">
-    <button class="btn btn-primary" (click)="addEducationDetail()">
+<div class="container">
+  <div style="text-align: center;">
+    <h3>Education Details</h3>
+  </div>
+
+  <div class="right mb-10">
+    <button mat-button class="next" (click)="addEducationDetail()">
       Add Education
     </button>
   </div>
-  
-  <div class="container">
-    <div style="text-align: center;">
-      <h3>Education Details</h3>
-    </div>
-  
-    <table class="table" [formGroup]="educationDetailFormGroup">
-  
-      <thead>
-        <tr>
-          <th>Education Name</th>
-          <th>University Name</th>
-          <th>Result</th>
-          <th>Year Of Passing</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-  
-      <tbody>
-        <ng-container formArrayName="educationDetail">
-          <ng-container *ngFor="let item of educationDetailFormGroup.get('educationDetail')['controls']; let i = index;">
-            <tr [formGroupName]="i">
-              <td class="form-group">
-                <input type="text" formControlName="educationName" placeholder="Education Name" class="form-control"
-                  name="">
-                <div *ngIf="item.get('educationName').touched && item.get('educationName').invalid" class="danger">
-                  Education Name Required</div>
-              </td>
-  
-              <td class="form-group">
-                <input type="text" class="form-control" placeholder="University Name" formControlName="universityName"
-                  name="">
-                <div *ngIf="item.get('universityName').touched && item.get('universityName').invalid" class="danger">
-                  University Name Required</div>
-              </td>
-  
-              <td class="form-group">
-                <input type="text" class="form-control" formControlName="result" name="" placeholder="Result">
-                <div *ngIf="item.get('result').touched && item.get('educationName').invalid" class="danger">
-                  Result Is Required</div>
-              </td>
-  
-              <td class="form-group">
-                <input type="text" class="form-control" formControlName="year" placeholder="Year Of Passing"
-                  name="">
-                <div *ngIf="item.get('year').touched && item.get('year').invalid" class="danger">
-                  Year Of Passing is Requied</div>
-              </td>
-  
-              <td>
-                <!-- <mat-icon *ngIf="!item.disabled" style="color: blue; width: 50px;" (click)="onSave(i)">save</mat-icon>
-                <mat-icon *ngIf="item.disabled" style="color:blue" (click)="edit(i)">edit</mat-icon> -->
-                <mat-icon style="color:red" (click)="removeEducationDetail(i)">remove</mat-icon>
-              </td>
-            </tr>
-          </ng-container>
+
+  <table class="table" [formGroup]="educationDetailFormGroup">
+
+    <thead>
+      <tr>
+        <th>Education Name</th>
+        <th>University Name</th>
+        <th>Result</th>
+        <th>Year Of Passing</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <ng-container formArrayName="educationDetail">
+        <ng-container *ngFor="let item of educationDetailFormGroup.get('educationDetail')['controls']; let i = index;">
+          <tr [formGroupName]="i">
+            <td class="form-group">
+              <mat-form-field appearance="fill">
+                <input matInput [readonly]="item.get('isEdit').value" type="text" formControlName="educationName"
+                  placeholder="Education Name" class="form-control" name="">
+                <mat-error *ngIf="item.get('educationName').touched && item.get('educationName').errors?.required"
+                  class="danger">
+                  Education Name Required
+                </mat-error>
+              </mat-form-field>
+            </td>
+
+            <td class="form-group">
+              <mat-form-field appearance="fill">
+                <input matInput [readonly]="item.get('isEdit').value" type="text" class="form-control"
+                  placeholder="University Name" formControlName="universityName" name="">
+                <mat-error *ngIf="item.get('universityName').touched && item.get('universityName').errors?.required"
+                  class="danger">
+                  University Name Required
+                </mat-error>
+              </mat-form-field>
+            </td>
+
+            <td class="form-group">
+              <mat-form-field appearance="fill">
+                <input matInput type="text" [readonly]="item.get('isEdit').value" class="form-control"
+                  formControlName="result" name="" placeholder="Result">
+                <mat-error *ngIf="item.get('result').touched && item.get('result').errors?.required" class="danger">
+                  Result Is Required
+                </mat-error>
+              </mat-form-field>
+            </td>
+
+            <td class="form-group">
+              <mat-form-field appearance="fill">
+                <input matInput type="text" [readonly]="item.get('isEdit').value" class="form-control"
+                  formControlName="year" placeholder="Year Of Passing" name="">
+                <mat-error *ngIf="item.get('year').touched && item.get('year').errors?.required" class="danger">
+                  Year Of Passing is Requied
+                </mat-error>
+              </mat-form-field>
+            </td>
+
+            <td>
+              <mat-icon *ngIf="!item.get('isEdit').value" class="primary" (click)="toggle(i)">
+                save
+              </mat-icon>
+              <mat-icon *ngIf="!item.get('isEdit').value" class="primary" (click)="toggle(i)">
+                edit
+              </mat-icon>
+              <mat-icon class="danger" (click)="removeEducationDetail(i)">delete</mat-icon>
+            </td>
+          </tr>
         </ng-container>
-      </tbody>
-    </table>
-  </div>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

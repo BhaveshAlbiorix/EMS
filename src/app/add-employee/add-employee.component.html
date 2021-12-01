@@ -1,8 +1,8 @@
 <mat-stepper linear #stepper>
-    <mat-step [stepControl]="educationDetailFormGroup">
+    <mat-step [stepControl]="personalDetailFormGroup">
         <ng-template matStepLabel>Personal Detail</ng-template>
         <mat-card>
-            <app-educatoin-detail [edForm]="educationDetailFormGroup"></app-educatoin-detail>
+            <app-personal-detail [pdForm]="personalDetailFormGroup"></app-personal-detail>
 
             <div>
                 <button mat-button matStepperNext class="next">Next</button>
@@ -45,10 +45,10 @@
     </mat-step>
     <mat-step [stepControl]="currentOrgFormGroup">
         <ng-template matStepLabel>Current Organization Detail</ng-template>
-
+        <app-current-org-detail [currentOrgForm]="currentOrgFormGroup"></app-current-org-detail>
         <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
+            <button mat-button matStepperPrevious class="back mr-10">Back</button>
+            <button mat-button (click)="save()" class="next">Save</button>
         </div>
     </mat-step>
 </mat-stepper>

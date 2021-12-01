@@ -15,6 +15,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background-color: grey;
 }
 
+.right{
+    text-align: right;
+}
+
 .mr-10{
     margin-right: 10px !important;
 }
@@ -28,3 +32,35 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 table {width: 100%;}
+
+::ng-deep .mat-form-field-readonly {
+    .mat-form-field-wrapper {
+      .mat-form-field-flex {
+        .mat-form-field-outline {
+          .mat-form-field-outline-start {
+            background-color: rgba(19, 12, 12, 0.25) !important;
+          }
+  
+          .mat-form-field-outline-gap {
+            background-color: rgba(212, 208, 208, 0.25) !important;
+          }
+  
+          .mat-form-field-outline-end {
+            background-color: rgba(15, 13, 13, 0.25) !important;
+          }
+        }
+      }
+    }
+  }
+
+  .primary{
+    color: blue;
+  }
+
+  .danger{
+    color: red;
+  }
+
+  .grey{
+    color: grey;
+  }

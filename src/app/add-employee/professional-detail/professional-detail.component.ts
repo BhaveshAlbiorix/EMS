@@ -23,14 +23,14 @@ export class ProfessionalDetailComponent implements OnInit {
     }
 
     var mimeType = files[0].type;
-    if (mimeType.match(/image\/*/) == null) {
+    if (mimeType.match(/pdf\/*/) == null) {
       return;
     }
 
     var reader = new FileReader();
     reader.readAsDataURL(files[0]);
-    this.professionalDetailFormGroup.patchValue({ resume: files[0] })
     reader.onload = (_event) => {
+      this.professionalDetailFormGroup.patchValue({ resume: reader.result })
     }
   }
 }

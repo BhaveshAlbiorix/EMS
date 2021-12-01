@@ -1,45 +1,89 @@
-<div id="education-detail" [formGroup]="experienceDetailFormGroup">
-    <mat-card>
-        <div formGroupName="experienceDetailFormGroup">
-            <div formArrayName="experienceDetail">
-                <button mat-button (click)="addFormArray()" class="next">
-                    Add More
-                </button>
+<div class="container">
+    <div style="text-align: center;">
+        <h3>Experiance Details</h3>
+    </div>
 
-                <div *ngFor="let item of experienceDetailFormGroup.get('experienceDetail').controls; let i=index"
-                    [formGroupName]="i">
+    <div class="right mb-10">
+        <button mat-button class="next" (click)="addExperiance()">
+            Add Experiance
+        </button>
+    </div>
 
-                    <mat-form-field>
-                        <input matInput placeholder="Company Name" formControlName="companyName" required>
-                        <mat-error *ngIf="controls[i].controls?.educationName.errors?.required">
-                            Company Name is required
-                        </mat-error>
-                    </mat-form-field>
+    <table class="table" [formGroup]="experienceDetailFormGroup">
 
-                    <mat-form-field>
-                        <input matInput placeholder="Position" formControlName="position" required>
-                        <mat-error *ngIf="controls[i].controls?.position.errors?.required">
-                            position is required
-                        </mat-error>
-                    </mat-form-field>
+        <thead>
+            <tr>
+                <th>Comapny Name</th>
+                <th>Position</th>
+                <th>Total Year</th>
+                <th>Last CTC</th>
+                <th>Action</th>
+            </tr>
+        </thead>
 
-                    <mat-form-field>
-                        <input matInput placeholder="Total Year" formControlName="totalYear" required>
-                        <mat-error *ngIf="controls[i].controls?.totalYear.errors?.required">
-                            Result is required
-                        </mat-error>
-                    </mat-form-field>
+        <tbody>
+            <ng-container formArrayName="experienceDetail">
+                <ng-container
+                    *ngFor="let item of experienceDetailFormGroup.get('experienceDetail')['controls']; let i = index;">
+                    <tr [formGroupName]="i">
+                        <td class="form-group">
+                            <mat-form-field appearance="fill">
+                                <input matInput [readonly]="item.get('isEdit').value" type="text"
+                                    formControlName="companyName" placeholder="Company Name" name="">
+                                <mat-error
+                                    *ngIf="item.get('companyName').touched && item.get('companyName').errors?.required"
+                                    position>
+                                    Company Name Required
+                                </mat-error>
+                            </mat-form-field>
+                        </td>
 
-                    <mat-form-field>
-                        <input matInput placeholder="Last CTC" formControlName="lastCTC">
-                        <mat-error *ngIf="controls[i].controls?.lastCTC.errors?.required">
-                            Last CTC is required
-                        </mat-error>
-                    </mat-form-field>
+                        <td class="form-group">
+                            <mat-form-field appearance="fill">
+                                <input matInput [readonly]="item.get('isEdit').value" type="text" placeholder="Position"
+                                    formControlName="position" name="">
+                                <mat-error *ngIf="item.get('position').touched && item.get('position').errors?.required"
+                                    position>
+                                    Position Name Required
+                                </mat-error>
+                            </mat-form-field>
+                        </td>
 
-                    <button (click)="removeEducationDetail(i)" mat-button class="back">Remove</button>
-                </div>
-            </div>
-        </div>
-    </mat-card>
+                        <td class="form-group">
+                            <mat-form-field appearance="fill">
+                                <input matInput type="number" [readonly]="item.get('isEdit').value"
+                                    formControlName="totalYear" name="" placeholder="Total Year">
+                                <mat-error
+                                    *ngIf="item.get('totalYear').touched && item.get('totalYear').errors?.required"
+                                    position>
+                                    Total Year is Required
+                                </mat-error>
+                            </mat-form-field>
+                        </td>
+
+                        <td class="form-group">
+                            <mat-form-field appearance="fill">
+                                <input matInput type="text" [readonly]="item.get('isEdit').value"
+                                    formControlName="lastCTC" placeholder="Last CTC" name="">
+                                <mat-error *ngIf="item.get('lastCTC').touched && item.get('lastCTC').errors?.required"
+                                    position>
+                                    Last CTC is Requied
+                                </mat-error>
+                            </mat-form-field>
+                        </td>
+
+                        <td>
+                            <mat-icon *ngIf="!item.get('isEdit').value" class="primary" (click)="toggle(i)">
+                                save
+                            </mat-icon>
+                            <mat-icon *ngIf="item.get('isEdit').value" class="primary" (click)="toggle(i)">
+                                edit
+                            </mat-icon>
+                            <mat-icon class="danger" (click)="removeExperiance(i)">delete</mat-icon>
+                        </td>
+                    </tr>
+                </ng-container>
+            </ng-container>
+        </tbody>
+    </table>
 </div>

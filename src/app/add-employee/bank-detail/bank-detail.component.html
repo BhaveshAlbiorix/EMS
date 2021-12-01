@@ -45,7 +45,7 @@
                 <mat-error *ngIf="controls.aadharNo.errors?.required">
                     Aadhar No is required
                 </mat-error>
-                <mat-error *ngIf="controls.aadharNo.errors?.minlength">
+                <mat-error *ngIf="controls.aadharNo.errors?.pattern">
                     Aadhar No is not valid
                 </mat-error>
             </mat-form-field>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-current-org-detail',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CurrentOrgDetailComponent implements OnInit {
 
+  @Input("currentOrgForm") currentOrgFormGroup!: any;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  get controls() {
+    return this.currentOrgFormGroup.controls;
+  }
 }
